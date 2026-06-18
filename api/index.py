@@ -21,7 +21,7 @@ class RequestBody(BaseModel):
     regions: list[str]
     threshold_ms: float
 
-@app.options("/")
+@app.options("/api/latency")
 def options_root():
     response = Response()
     response.headers["Access-Control-Allow-Origin"] = "*"
@@ -29,7 +29,7 @@ def options_root():
     response.headers["Access-Control-Allow-Headers"] = "*"
     return response
 
-@app.post("/")
+@app.post("/api/latency")
 def metrics(req: RequestBody, response: Response):
     response.headers["Access-Control-Allow-Origin"] = "*"
 
